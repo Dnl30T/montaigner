@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
+@font-face {
+    font-family: "TravelingTypewriter";
+    src: url("../../fonts/TravelingTypewriter.ttf");
+
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rosarivo', serif;
+}
+html,body{
+    height: 100%;
+    background-image: url(../../images/endlessBG.jpg);
+}
+div.overlay{
+	/*position: absolute;*/
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: rgba(22, 26, 29,0.8);
+}
+.box-login{
+    max-width: 600px;
+    width: 95%;
+    padding: 40px 2%;
+    background: rgb(22, 22, 22);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 5px 10px 5px #000000;
+}
+.box-login h2{
+    text-align: center;
+    font-size: 19px;
+    font-weight: 400;
+    color: rgb(255, 0, 0);
+}
+.box-login h2 a{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    background: rgb(44, 44, 44);
+    padding: 10px;
+    transition: 0.5s;
+}
+.box-login h2 a:hover{
+    background: rgb(255, 255, 255);
+}
+.box-login input[type=text],
+.box-login input[type=password]{
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(255, 255, 255);
+    padding-left: 8px;
+    margin-top: 8px;
+    background: rgb(0, 0, 0);
+    transition: 0.5s;
+    cursor: default;
+    color: red;
+}
+.box-login input[type=text]:hover,
+.box-login input[type=password]:hover{
+    width: 110%;
+}
+.box-login input[type=submit]{
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 9px;
+    background: #000000;
+    color: rgb(255, 0, 0);
+    border: none;
+    transition: 0.5s;
+}
+.box-login input[type=submit]:hover{
+    background: #f5f5f5;
+}
+/*Painel de controle*/
+
+.clear{
+    clear: both;
+}
+.center{
+    padding: 10px 2%;
+    margin: 0 auto;
+}
+.center i{
+    color: red;
+}
+.navMenu{
+    padding: 5px;
+    background: rgb(44, 44, 44);
+    display: flex;
+    justify-content: center;
+}
+.buttonMenu{
+    padding: 5px;
+    margin: 0 10px;
+}
+.buttonMenu a{
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    font-weight: 400;
+    transition: 0.5s;
+}
+.buttonMenu a:hover{
+    background-color: rgb(95, 95, 95);
+    font-size: 20pt;
+    padding: 5px;
+    border-radius: 10px;
+}
+aside{
+    overflow-x: hidden;
+    padding: 10px;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background: rgb(0, 0, 0);
+}
+.menu-wraper{
+    width: 280px;
+}
+header{
+    position: relative;
+    left: 300px;
+    background: rgb(27, 27, 27);
+    width: calc(100% - 300px);
+}
+.logout{
+    float: right;
+}
+.logout a{
+    text-decoration: none;
+}
+.logout a span{
+    font-size: 17px;
+    color: red;
+}
+.menu-btn{
+    float: left;
+    cursor: pointer;
+    font-size: 23px;
+    color: black;
+}
+.logout{
+    font-size: 23px;
+}
+.box-usuario{
+    text-align: center;
+}
+.avatar-usuario{
+    transition: .7s ease-in-out;
+    text-align: left;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: inline-block;
+}
+.avatar-usuario i{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    font-size: 50px;
+    color: white;
+}
+.avatar-usuario:hover{
+    transform: rotate(270deg);
+}
+.imagem-usuario{
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+}
+.imagem-usuario img{
+    border: 3px solid white;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+.nome-usuario{
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+.nome-usuario p{
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+}
+.w100{
+    width: 100%;
+}
+.w50{
+    width: 48%;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.content{
+    width: calc(100% - 300px);
+    position: relative;
+    left: 300px;
+    padding: 10px;
+}
+.box-lore{
+    padding: 80px;
+    background: rgb(19, 19, 19, 0.9);
+}
+.box-lore h2{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-family: 'TravelingTypewriter';
+    font-weight: 400;
+}
+.cards{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.cards .wildcard{
+    border: 3px solid rgb(49, 0, 0);
+    background-image: url(../../images/cardBg.png);
+    width: 280px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+.cards .wildcard .image{
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 230px;
+    border: 3px solid rgb(0, 0, 0);
+    text-align: center;
+}
+.cards .wildcard .image i{
+    color: red;
+    font-size: 150pt;
+}
+.cards .wildcard .image img{
+    width: 100%;
+    height: 100%;
+}
+.cards .wildcard .text{
+    height: 160px;
+    font-size: 10pt;
+    background-color: rgb(20, 20, 20, 0.9);
+    padding: 8px;
+    text-align: start;
+    border: 3px solid rgb(0, 0, 0);
+
+}
+.cards .wildcard h1{
+    font-size: 14pt;
+    color: rgb(255, 0, 0);
+    font-weight: 400;
+    background-color: black;
+    width: 100%;
+    padding: 0 7px;
+    border: 3px solid rgb(0, 0, 0);
+}
+.infoAgent{
+    display: flex;
+    justify-content: center;
+}
+.infoAgent .info p{
+    font-size: 14pt;
+    font-family: 'TravelingTypewriter';
+    padding: 10px;
+    color: white;
+}
+.infoAgent img{
+    width: 250px;
+    height: 250px;
+    background-color: rgb(48, 48, 48);
+    border-style: solid;
+    justify-items: right;
+}
+.mail{
+    background: wheat;
+    padding: 10px;
+}
+.mail ul{
+    text-align: justify;
+}
+.mail li{
+    font-family: 'TravelingTypewriter';
+}
+.mail p{
+    font-family: 'TravelingTypewriter';
+    color: rgb(0, 0, 0);
+    text-align: justify;
+    text-indent: 30px;
+}
+.mail .list-lore{
+    padding: 0 50px;
+}
+.box-content{
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.911);
+    margin-bottom: 10px;
+    width: 100%;
+}
+.box-content p{
+    color: #fff;
+}
+.box-null{
+    padding: 10px;
+    background: rgb(109, 109, 109);
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box-null h2{
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+}
+.box-null a{
+    color: rgb(61, 9, 9);
+    font-weight: 400;
+    text-decoration: solid;
+    transition: 0.3s;
+}
+.box-null a:hover{
+    color: rgb(126, 22, 196);
+}
+
+.itens-menu{
+    margin-top: 30px;
+}
+.itens-menu h2{
+    text-align: left;
+    font-weight: 300;
+    font-size: 18px;
+    background: lightseagreen;
+    color: white;
+    padding: 8px;
+}
+.itens-menu a{
+    display: block;
+    padding: 8px;
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid lightseagreen;
+    border-left: 1px solid lightseagreen;
+}
+.box-metricas{
+	margin-top:16px;
+	padding:0 15px;
+}
+
+.box-metrica-single{
+	float: left;
+	position: relative;
+	width: 33.3%;
+	background: #F4B03E;
+	border: 5px solid white;
+}
+
+.box-metricas .box-metrica-single:nth-of-type(2){
+	background: #E05C4E;
+}
+
+.box-metricas .box-metrica-single:nth-of-type(3){
+	background: #0091ea;
+}
+
+.box-metrica-wrapper{
+	padding: 10px 20px;
+	text-align: left;
+	color: white;
+}
+
+.box-metrica-wraper h2{
+	font-size: 28px;
+}
+
+.box-metrica-wraper p{
+	padding: 10px 0;
+	font-size: 26px;
+}
+.box-content table{
+    width: 100%;
+    margin: 20px 0;
+}
+.box-content form{
+    margin: 30px 0;
+}
+.box-content form label{
+    font-size: 17px;
+    font-weight: 300;
+    display: block;
+}
+.box-content .form-group{
+    margin: 15px 0;
+}
+.box-content form input[type=text],input[type=mail],input[type=number],input[type=password],input[type=date]{
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    width: 100%;
+    height: 40px;
+    padding-left: 8px;
+    border: 1px solid #ccc;
+}
+.box-content form select{
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    width: 100%;
+    height: 40px;
+    padding-left: 8px;
+    border: 1px solid #ccc;
+}
+.box-content form input[type=file]{
+    margin-top: 8px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+.box-content form input[type=submit],input[type=reset]{
+    width: 90px;
+    height: 30px;
+    cursor: pointer;
+    margin-top: 9px;
+    background: rgb(102, 170, 216);
+    color: #fff;
+    border: none;
+    transition: 0.4s;
+}
+.box-content form input[type=submit]:hover,input[type=reset]:hover{
+    background: rgb(38, 79, 194);
+}
+
+.box-alert{
+    width: 100%;
+    height: 40px;
+}
+.sucesso{
+    color: green;
+}
+.erro{
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    aside{
+        display: none;
+    }
+    .content{
+        width: 100%;
+        left: 0;
+    }
+    header{
+        left: 0;
+        width: 100%;
+    }
+}
