@@ -14,8 +14,15 @@
     <?php
         }else{
     ?>
-        <h1>Mostrar personagem</h1>
-    <?php 
+    <h1>Characters</h1>
+    <?php
+            $character = Management::selectFilter('character-player','name',2,$_SESSION['ID'],'player');
+            foreach ($character as $key => $value) {
+                echo $value['name'].'</br>';
+            }
+    ?>
+        <h2><a href="<?php echo INCLUDE_PATH_PAINEL."characterCreator" ?>">Create character</a></h2>
+    <?php
         }
     ?>
 </div>

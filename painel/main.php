@@ -36,7 +36,18 @@
                             <?php } ?>
                             <div class="nome-usuario">
                                 <p><?php echo $_SESSION['nome'] ?></p>
-                                <p><?php if($_SESSION['permission'] == 1){echo 'Administrador';}else{echo 'Player';}; ?></p>
+                                <p>
+                                    <?php 
+                                    if($_SESSION['permission'] == 1){
+                                            echo 'Administrador';
+                                    }elseif ($_SESSION['path'] != null) {
+                                        echo Painel::getClassName($_SESSION['path']);
+                                    }else{
+                                        echo 'player';
+                                    }
+                                    
+                                    ?>
+                                </p>
                                 <p>Id da Sessão: <?php echo $_SESSION['ID']; ?></p>
                             </div>
                         </div>
@@ -61,40 +72,44 @@
                         <div class="clear"></div>
                     </div>
                     <div class="navMenu">
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('home'); ?> href="home">Home</a>
-                            </h2>
-                        </div>
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('lore'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>lore">Lore</a>
-                            </h2>
-                        </div>
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('rules'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>rules">Rules</a>
-                            </h2>
-                        </div>
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('wildcards'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>wildcards">Wildcards</a>
-                            </h2>
-                        </div>
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('dice-roller'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>dice">Dice Roller</a>
-                            </h2>
-                        </div>
-                        <div class="buttonMenu">
-                            <h2>
-                                <a <?php selecionadoMenu('team'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>team">Team stats</a>
-                            </h2>
-                        </div>
+                        <?php 
+                            if ($_SESSION['permission'] == 0) {
+                        ?>
+                            <div class="buttonMenu">
+                                <h2>
+                                    <a <?php selecionadoMenu('home'); ?> href="home">Home</a>
+                                </h2>
+                            </div>
+                            <div class="buttonMenu">
+                                <h2>
+                                    <a <?php selecionadoMenu('lore'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>lore">Lore</a>
+                                </h2>
+                            </div>
+                            <div class="buttonMenu">
+                                <h2>
+                                    <a <?php selecionadoMenu('rules'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>rules">Rules</a>
+                                </h2>
+                            </div>
+                            <div class="buttonMenu">
+                                <h2>
+                                    <a <?php selecionadoMenu('wildcards'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>wildcards">Wildcards</a>
+                                </h2>
+                            </div>
+                            <div class="buttonMenu">
+                                <h2>
+                                    <a <?php selecionadoMenu('team'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>team">Team stats</a>
+                                </h2>
+                            </div>
+                        <?php 
+                            }
+                            
+                        ?>
                     </div>
                 </header>
                     <div class="content">
-                        <?php Painel::carregarPagina() ?>
+                        <?php 
+                        Painel::carregarPagina();
+                        ?>
                     </div>
                 
                 <script src="<?php echo INCLUDE_PATH?>js/jquery.js"></script>

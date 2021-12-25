@@ -59,16 +59,21 @@
 				echo '<div class="box-alert erro"><i class="fa fa-times"></i> '.$mensagem.'</div>';
 			}
 		}
-		public static function selectAll($tabela,$start = null,$end = null){
-			if($start == null && $end == null)
-				$sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
-			else
-				$sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY order_id ASC LIMIT $start,$end");
-	
+		public static function selectAll($tabela){
+			$sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
 			$sql->execute();
-
 			return $sql->fetchAll();
 
+		}
+		public static function getClassName($idPath)
+		{
+			$getPath = Management::selectFilter('paths','name',2,$idPath,'id');
+			foreach ($getPath as $key => $value) {
+				//print_r($value['name']);
+				$class = explode("'s path", $value['name']);
+				$res =  implode(' ', $class);
+				return str_ireplace (' ', '', $res);
+			}
 		}
     }
 ?>

@@ -171,9 +171,23 @@ header{
     position: relative;
     font-size: 50px;
     color: white;
+    transition: .7s ease-in-out;
 }
 .avatar-usuario:hover{
     transform: rotate(270deg);
+}
+.avatar-usuario i:hover{
+    background-image: 
+    linear-gradient(to left, red,orange,yellow,green,blue,indigo,violet); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
+    animation: move 35s linear infinite;
+    /*animation by https://lenadesign.org*/
+}
+@keyframes move {
+	to {
+		background-position: 200vh;
+	}
 }
 .imagem-usuario{
     display: inline-block;
@@ -316,7 +330,8 @@ header{
 }
 .box-content{
     padding: 10px;
-    background: rgba(0, 0, 0, 0.911);
+    /* background: rgba(15, 15, 15, 0.86); */
+    background-color: rgba(0, 0, 0, 0.863);
     margin-bottom: 10px;
     width: 100%;
 }
@@ -416,7 +431,7 @@ header{
 .box-content .form-group{
     margin: 15px 0;
 }
-.box-content form input[type=text],input[type=mail],input[type=number],input[type=password],input[type=date]{
+.box-content form input[type=text],input[type=mail],input[type=number],input[type=password],input[type=date], textarea{
     margin-top: 8px;
     font-size: 16px;
     font-weight: normal;
@@ -466,7 +481,160 @@ header{
 .erro{
     color: red;
 }
-
+.create-Character{
+    padding: 0 10px;
+    align-items: center;
+    color: white;
+    width: 100%;
+}
+.create-Character h1{
+    text-align: center;
+}
+.create-Character form{
+    display: flex;
+    flex-direction: column;
+}
+.attr{
+    /* color: red; */
+    border: solid 1px red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.attr .attributes-Character{
+    padding: 10px 20px 10px 10px;
+    text-align: center;
+}
+.attr .attributes-Character .abilities{
+    padding: 5px;
+    text-align: center;
+    font-family: 'TravelingTypewriter';
+}
+.attr .attributes-Character .submit-attr{
+    padding: 5px;
+    justify-content: center;
+    text-align: center;
+    font-family: 'TravelingTypewriter';
+    display: flex;
+}
+.attr .attributes-Character .abilities input[type=radio]{
+    cursor: pointer;
+}
+.attr .submit-attr .button{
+    cursor: pointer;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: 0.7s;
+    font-family: 'TravelingTypewriter';
+}
+.attr .submit-attr .button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 0, 0);
+    color: rgb(250, 0, 0);
+    padding: 7px 14px;
+}
+.semi-attributes{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.semi-attributes .appr{
+    display: none;
+}
+.inputInfo{
+    padding: 10px;
+    margin-top: 10px;
+    color: red;
+}
+.create-Character form .name input[type=text]{
+    border: 1px solid rgb(255, 255, 255);
+    padding-left: 8px;
+    margin-top: 8px;
+    background: rgb(0, 0, 0);
+    transition: 0.5s;
+    cursor: default;
+    color: red;
+}
+#chooseClass, #chooseRace{
+    color: rgb(255, 255, 255);
+    background: black;
+}
+.create-Character form .loreCharacter textarea{
+    height: 300px;
+    width: 100%;
+    border: 1px solid rgb(255, 255, 255);
+    padding-left: 8px;
+    margin-top: 8px;
+    resize: none;
+    overflow-y: scroll;
+    background: rgb(0, 0, 0);
+    transition: 0.5s;
+    cursor: default;
+    color: red;
+}
+.create-Character form .classCharacter input[type=submit]{
+    background-color: red;
+    border: 1px white solid;
+    width: 10%;
+    transition: 0.7s;
+    font-weight: 500;
+}
+.create-Character form .classCharacter input[type=submit]:hover{
+    background-color: rgb(255, 255, 255);
+    color: red;
+    border-color: red ;
+}
+ .box-desc{
+    padding: 10px;
+    width: 34vh;
+    height: 65%;
+    overflow-y: scroll;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.897);
+    border: 2px white solid;
+    transform: translate(-120%, 20%);
+}
+ .box-desc p{
+    font-family: 'TravelingTypewriter';
+}
+ .box-desc b{
+    font-family: 'TravelingTypewriter';
+    font-size: 16pt;
+    font-weight: 400;
+}
+.box-desc .pathImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 2px solid rgb(139, 12, 12);
+    border-radius: 60px;
+}
+.newMontaigner{
+    text-align: center;
+    padding: 3px;
+    color: red;
+}
+.box-content .newMontaigner input[type=submit]{
+    color: white;
+    background-color: red;
+    width: 20%;
+    border: 1px white solid;
+    transition: 0.4s;
+}
+.box-content .newMontaigner input[type=submit]:hover{
+    color: red;
+    background-color: white;
+    width: 20%;
+    border: 2px red ridge;
+}
 @media screen and (max-width: 768px) {
     aside{
         display: none;

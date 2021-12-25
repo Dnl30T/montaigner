@@ -22,6 +22,7 @@
 
                             $info = $sql->fetch();
 
+                            $_SESSION['path'] = 4;
                             $_SESSION['login'] = true;
                             $_SESSION['user'] = $user;
                             $_SESSION['password'] = $password;
