@@ -171,14 +171,15 @@ header{
     position: relative;
     font-size: 50px;
     color: white;
-    transition: .7s ease-in-out;
+    transition: 1s ease-in-out;
 }
 .avatar-usuario:hover{
-    transform: rotate(270deg);
+    transform: rotate(360deg);
 }
 .avatar-usuario i:hover{
     background-image: 
     linear-gradient(to left, red,orange,yellow,green,blue,indigo,violet); 
+    background-clip: unset;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;  
     animation: move 35s linear infinite;
@@ -186,8 +187,36 @@ header{
 }
 @keyframes move {
 	to {
-		background-position: 200vh;
+		background-position: 75vh;
 	}
+}
+.pathInfo, .raceInfo{
+    color: red;
+    font-weight: 400;
+    padding: 15px;
+}
+.pathInfo h1{
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+.box-content .pathInfo input[type=submit]{
+    background-color: red;
+    border: white 1px solid;
+}
+.box-content .raceInfo input[type=submit]{
+    background-color: red;
+    border: white 1px solid;
+}
+.box-content .pathInfo input[type=submit]:hover{
+    background-color: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) 1px solid;
+    color: red;
+}
+.box-content .raceInfo input[type=submit]:hover{
+    background-color: rgb(0, 0, 0);
+    border: rgb(255, 0, 0) 1px solid;
+    color: red;
 }
 .imagem-usuario{
     display: inline-block;
@@ -489,6 +518,7 @@ header{
 }
 .create-Character h1{
     text-align: center;
+    color: white;
 }
 .create-Character form{
     display: flex;
@@ -599,7 +629,7 @@ header{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.897);
     border: 2px white solid;
-    transform: translate(-120%, 20%);
+    transform: translate(-120%, -65%);
 }
  .box-desc p{
     font-family: 'TravelingTypewriter';

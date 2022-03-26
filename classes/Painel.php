@@ -75,5 +75,15 @@
 				return str_ireplace (' ', '', $res);
 			}
 		}
+		public static function getRaceName($idRace)
+		{
+			$getRace = Management::selectFilter('races','name',2,$idRace,'id');
+			foreach ($getRace as $key => $value) {
+				//print_r($value['name']);
+				$class = explode("'s path", $value['name']);
+				$res =  implode(' ', $class);
+				return str_ireplace (' ', '', $res);
+			}
+		}
     }
 ?>

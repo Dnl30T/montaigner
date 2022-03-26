@@ -36,7 +36,11 @@
                 );
                 $sql->execute();
             }
-            return $sql->fetchAll();
+            try {
+                return $sql->fetchAll();
+            } catch (\Throwable $th) {
+                return null;
+            }
         }
     }
     

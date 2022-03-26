@@ -1,45 +1,78 @@
-<?php
-        if (isset($_POST['sendInfo'])) {
-?>
 <div class="box-content">
+    <form action="" method="post">
+        <div class="pathInfo">
+            <h1>Path information</h1>
+            <label for="classCharacter">See paths</label>
+            <select name="chooseClass" id="chooseClass">
+                <?php 
+                    $classes = Painel::selectAll('paths');
+                    foreach ($classes as $key => $value) {
+                ?>
+                    <option value="<?php echo $value['id']; ?>">
+                        <?php echo $value['name']; ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
+            <input type="submit" name="sendDesc" value="info">
+        </div>
+        <div class="raceInfo">
+            <label for="raceCharacter">See possible races (choose 1 to raise your chances)</label>
+            <select name="chooseRace" id="chooseRace">
+                <option value="0">Random</option>
+                <?php 
+                    $races = Painel::selectAll('races');
+                    foreach ($races as $key => $value) {
+                ?>
+                    <option value="<?php echo $value['id']; ?>">
+                        <?php echo $value['name'].' 33%'; ?>
+                    </option>
+                <?php
+                    }
+                ?>
+            </select>
+            <input type="submit" name="sendDescR" value="info">
+        </div>
+    </form>
+</div>
+<div class="box-content">
+    <hr></hr>
     <div class="create-Character">
-<?php
-            $lore = $_POST['loreCharacter'];
-            $name = $_POST['characterName'];
-            $class = $_POST['chooseClass'];
-            $skill = $_POST['skillSend'];
-            $life = $_POST['lifeSend'];
-            $ddg = $_POST['ddgSend'];
-            $speed = $_POST['speedSend'];
-            $cns = $_POST['cns'];
-            $dxt = $_POST['dxt'];
-            $str = $_POST['str'];
-            $mnd = $_POST['mnd'];
-            $pwr = $_POST['pwr'];
-
-            $sql = MySql::conectar()->prepare(
-                "INSERT INTO `character-player` (`id`, `player`, `class`, `life-points`, `skill-points`, `strenght`, `mind`, `dexterity`, `power`, `constituition`, `xp`, `name`, `lore`, `dodging`, `speed`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-            );
-            $sql->execute(array(null,$_SESSION['ID'],$class,$life,$skill,$str,$mnd,$dxt,$pwr,$cns,0,$name,$lore,$ddg,$speed));
-            header('Location: '.INCLUDE_PATH_PAINEL);
-            die();
-    ?>
-    <h1>Congratulations you're now a Montaigner <?php echo $name ?></h1>
-    <a href="<?php echo INCLUDE_PATH_PAINEL ?>">See your montaigners</a>
+        <?php 
+            if (isset($_POST['sendDesc'])) {
+                $op = 'paths';
+                $desc = $_POST['chooseClass'];
+                //echo $op.$desc;
+                $description = Management::selectFilter($op,null,1,'id',$desc);
+                foreach ($description as $key => $value) {
+        ?>
+        <div class="box-desc">
+        <?php
+                    echo "<img src='".INCLUDE_PATH."images/classes/".Painel::getClassName($value['id']).".png' class='pathImg'"."<br>";
+                    echo "<p><b>Path Analyzed:</b></p>";
+                    echo "<p>".$value['name']."</p>";
+                    echo "<p><b>Daniel D. description:</b></p>";
+                    echo "<p>".$value['description']."</p>";
+                    echo "<p><b>Bonus</b></p>";
+                    echo "<p>".$value['bonus']."</p>";
+                }
+        ?>
+    </div>
     <?php
-    }else{
-?>
-<div class="box-content">
-    <div class="create-Character">
+        }
+    ?>
     <?php 
-        if (isset($_POST['sendDesc'])) {
-            $desc = $_POST['chooseClass'];
-            $description = Management::selectFilter('paths','description',1,'id',$desc);
+        if (isset($_POST['sendDescR'])) {
+            $op = 'races';
+            $desc = $_POST['chooseRace'];
+            //echo $op.$desc;
+            $description = Management::selectFilter($op,null,1,'id',$desc);
             foreach ($description as $key => $value) {
     ?>
-        <div class="box-desc">
+    <div class="box-desc">
     <?php
-                echo "<img src='".INCLUDE_PATH."images/classes/".Painel::getClassName($value['id']).".png' class='pathImg'"."<br>";
+                echo "<img src='".INCLUDE_PATH."images/races/".Painel::getRaceName($value['id']).".png' class='pathImg'"."<br>";
                 echo "<p><b>Path Analyzed:</b></p>";
                 echo "<p>".$value['name']."</p>";
                 echo "<p><b>Daniel D. description:</b></p>";
@@ -48,43 +81,17 @@
                 echo "<p>".$value['bonus']."</p>";
             }
     ?>
-        </div>
+    </div>
     <?php
         }
     ?>
+    </div>
+</div>
+<div class="box-content">
+    <div class="create-Character">
         <form action="" method="post">
         <h1>Make your character</h1>
             <div class="inputInfo">
-                <div class="classCharacter">
-                    <label for="classCharacter">Choose your path</label>
-                    <select name="chooseClass" id="chooseClass">
-                        <?php 
-                            $classes = Painel::selectAll('paths');
-                            foreach ($classes as $key => $value) {
-                        ?>
-                            <option value="<?php echo $value['id']; ?>">
-                                <?php echo $value['name']; ?>
-                            </option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                    <input type="submit" name="sendDesc" value="info">
-                    <label for="raceCharacter">Choose your race</label>
-                    <select name="chooseRace" id="chooseRace">
-                        <?php 
-                            $races = Painel::selectAll('races');
-                            foreach ($races as $key => $value) {
-                        ?>
-                            <option value="<?php echo $value['id']; ?>">
-                                <?php echo $value['name']; ?>
-                            </option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                    <a href="lore">See description</a>
-                </div>
                 <div class="name">
                     <label for="nameCharacter">Choose your name</label>
                     <input type="text" name="characterName" id="characterName">
@@ -96,7 +103,7 @@
             </div>
             <div class="contentView">
                 <div class="attr">
-                <h3>Set your skills</h3>
+                <h3>Set your skills (max: 5) </h3>
                     <div class="attributes-Character">
                         <div class="abilities">
                             <label for="strenght">Strenght</label>
@@ -184,6 +191,3 @@
         </form>
     </div>
 </div>
-<?php
-    }
-?>
